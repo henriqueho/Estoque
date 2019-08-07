@@ -15,9 +15,12 @@ public class salvarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_salvar);
 
         TextView nome = (TextView) findViewById(R.id.nomeView);
-
+        TextView quantidade = (TextView) findViewById(R.id.quantidadeView);
+        TextView preco = (TextView) findViewById(R.id.precoView);
         RepositorioProdutoSharedPreference repositorioProdutoSharedPreference = new RepositorioProdutoSharedPreference(salvarActivity.this.getApplicationContext());
         Produto produto = repositorioProdutoSharedPreference.lerProduto();
         nome.setText(produto.nome);
+        quantidade.setText(produto.quantidade);
+        preco.setText(produto.preco);
     }
 }

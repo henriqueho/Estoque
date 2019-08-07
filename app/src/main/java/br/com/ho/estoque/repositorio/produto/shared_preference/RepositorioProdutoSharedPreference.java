@@ -18,6 +18,9 @@ public class RepositorioProdutoSharedPreference implements ContratoRepositorioDe
     public void criaProduto(Produto produto) {
         SharedPreferences.Editor edit = saved.edit();
         edit.putString("nome",produto.nome);
+        edit.putString("quantidade",produto.quantidade);
+        edit.putString("preco",produto.preco);
+        edit.putString("imagem",produto.imagem);
         edit.apply();
     }
 
@@ -25,6 +28,9 @@ public class RepositorioProdutoSharedPreference implements ContratoRepositorioDe
     public Produto lerProduto() {
         Produto produto = new Produto();
         produto.nome = saved.getString("nome", "");
+        produto.quantidade = saved.getString("quantidade", "");
+        produto.preco = saved.getString("preco", "");
+        produto.imagem = saved.getString("imagem", "");
         return produto;
     }
 
