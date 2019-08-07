@@ -30,11 +30,39 @@ public class MainActivity extends AppCompatActivity {
                 produto.quantidade = quantidade.getText().toString();
                 produto.preco = preco.getText().toString();
 
-                RepositorioProdutoSharedPreference repositorioProdutoSharedPreference = new RepositorioProdutoSharedPreference(MainActivity.this.getApplicationContext());
-                repositorioProdutoSharedPreference.criaProduto(produto);
+                boolean flag = false;
 
-                Intent intent = new Intent(MainActivity.this, salvarActivity.class);
-                MainActivity.this.startActivity(intent);
+                if(produto.nome.isEmpty()) {
+                    nome.setError("o nome do produto se encontra vazio");
+                    flag = false;
+                } else {
+                    nome.setError(null);
+                    flag = true;
+                }
+
+                if (produto.quantidade.isEmpty()) {
+                    quantidade.setError("a quantidade se encontra vazia");
+                    flag = false;
+                } else {
+                    quantidade.setError(null);
+                    flag = true;
+                }
+
+                if (produto.preco.isEmpty()) {
+                    preco.setError("o preço se encotra vazio");
+                    flag = false;
+                } else {
+                    preco.setError(null);
+                    flag = true;
+                }
+
+                if (flag == true) {
+                    RepositorioProdutoSharedPreference repositorioProdutoSharedPreference = new RepositorioProdutoSharedPreference(MainActivity.this.getApplicationContext());
+                    repositorioProdutoSharedPreference.criaProduto(produto);
+
+                    Intent intent = new Intent(MainActivity.this, salvarActivity.class);
+                    MainActivity.this.startActivity(intent);
+                }
             }
         });
     }
