@@ -20,4 +20,12 @@ public class RepositorioProdutoSharedPreference implements ContratoRepositorioDe
         edit.putString("nome",produto.nome);
         edit.apply();
     }
+
+    @Override
+    public Produto lerProduto() {
+        Produto produto = new Produto();
+        produto.nome = saved.getString("nome", "");
+        return produto;
+    }
+
 }
