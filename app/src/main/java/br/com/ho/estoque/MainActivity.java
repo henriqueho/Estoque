@@ -31,30 +31,35 @@ public class MainActivity extends AppCompatActivity {
                 produto.preco = preco.getText().toString();
 
                 boolean flag = false;
+                boolean flag1 = false;
+                boolean flag2 = false;
+                boolean flag3 = false;
 
                 if(produto.nome.isEmpty()) {
                     nome.setError("o nome do produto se encontra vazio");
-                    flag = false;
+                    flag1 = false;
                 } else {
                     nome.setError(null);
-                    flag = true;
+                    flag1 = true;
                 }
 
                 if (produto.quantidade.isEmpty()) {
                     quantidade.setError("a quantidade se encontra vazia");
-                    flag = false;
+                    flag2 = false;
                 } else {
                     quantidade.setError(null);
-                    flag = true;
+                    flag2 = true;
                 }
 
                 if (produto.preco.isEmpty()) {
                     preco.setError("o preço se encotra vazio");
-                    flag = false;
+                    flag3 = false;
                 } else {
                     preco.setError(null);
-                    flag = true;
+                    flag3 = true;
                 }
+
+                flag = flag1&&flag2&&flag3;
 
                 if (flag == true) {
                     RepositorioProdutoSharedPreference repositorioProdutoSharedPreference = new RepositorioProdutoSharedPreference(MainActivity.this.getApplicationContext());
