@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Estoque</string>
+    <string name="quatidade">Quantidade</string>
 </resources>
