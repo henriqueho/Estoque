@@ -34,4 +34,9 @@ public class RepositorioProdutoSharedPreference implements ContratoRepositorioDe
         return produto;
     }
 
+    @Override
+    public Produto lerProduto(String codigo) {
+        return null;
+    }
+
 }

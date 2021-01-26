@@ -7,4 +7,6 @@ public interface ContratoRepositorioDeProduto {
     public void criaProduto(Produto produto);
 
     public Produto lerProduto();
+
+    public Produto lerProduto(String codigo);
 }
