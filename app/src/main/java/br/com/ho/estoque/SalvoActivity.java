@@ -32,6 +32,15 @@ public class SalvoActivity extends AppCompatActivity {
             }
         });
 
+        Button estoque = findViewById(R.id.button_estoque);
+        estoque.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SalvoActivity.this, EstoqueActivity.class);
+                SalvoActivity.this.startActivity(intent);
+
+            }
+        });
         /*
         ProdutoDbHelper mDbHelper = new ProdutoDbHelper(SalvarActivity.this.getApplicationContext());
         SQLiteDatabase db = mDbHelper.getReadableDatabase();

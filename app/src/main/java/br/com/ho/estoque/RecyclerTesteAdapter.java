@@ -1,10 +1,15 @@
 package br.com.ho.estoque;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -37,7 +42,7 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
         viewHolder.viewNome.setText(pessoa.nome);
         viewHolder.viewQuant.setText(pessoa.quantidade);
         viewHolder.viewPreco.setText(pessoa.preco);
-
+        viewHolder.view.setBackgroundColor(ContextCompat.getColor(mctx,android.R.color.white));
     }
 
 
@@ -53,6 +58,7 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
         protected TextView viewId;
         protected TextView viewQuant;
         protected TextView viewPreco;
+        protected LinearLayout view;
 
         public RecyclerProdutoViewHolder(final View itemView) {
             super(itemView);
@@ -61,12 +67,13 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
             viewId = (TextView) itemView.findViewById(R.id.textview_id);
             viewQuant = (TextView) itemView.findViewById(R.id.textview_quat);
             viewPreco = (TextView) itemView.findViewById(R.id.textview_preco);
+            view = itemView.findViewById(R.id.linear_itenslistas_background);
 
             //Setup the click listener
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    view.setBackgroundColor(Color.parseColor("#9C9898"));
                     clickRecyclerViewInterface.onCustomClick(mList.get(getLayoutPosition()));
 
                 }
