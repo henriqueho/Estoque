@@ -1,6 +1,8 @@
 package br.com.ho.estoque;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,7 +44,7 @@ public class AtualizarActivity extends AppCompatActivity {
         atualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                atualizar();
+                atualizacao();
             }
         });
 
@@ -50,7 +52,7 @@ public class AtualizarActivity extends AppCompatActivity {
         deletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deletar();
+                delecao();
             }
         });
 
@@ -64,7 +66,7 @@ public class AtualizarActivity extends AppCompatActivity {
         });
     }
 
-    private void deletar(){
+    private void apagar() {
         ProdutoTabela produtoTabela = new ProdutoTabela(AtualizarActivity.this.getApplicationContext());
         produtoTabela.deletar(produto.id);
 
@@ -82,12 +84,48 @@ public class AtualizarActivity extends AppCompatActivity {
         preco.setText(produto.preco);
     }
 
-    private void atualizar(){
+    private void atualizar() {
         produto.nome = nome.getText().toString();
         produto.quantidade = quantidade.getText().toString();
         produto.preco = preco.getText().toString();
-        ProdutoTabela produtoTabela = new ProdutoTabela(AtualizarActivity.this.getApplicationContext());
+        ProdutoTabela produtoTabela = new ProdutoTabela(AtualizarActivity.this);
         produtoTabela.update(produto);
         salvo();
+    }
+
+    private void atualizacao() {
+        new AlertDialog.Builder(this)
+                .setTitle("Atualizando")
+                .setMessage("Tem certeza que deseja atualizar esse produto?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        atualizar();
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                }).show();
+    }
+
+    private void delecao() {
+        new AlertDialog.Builder(this)
+                .setTitle("Deletando")
+                .setMessage("Tem certeza que deseja delelar esse produto?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        apagar();
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                }).show();
     }
 }

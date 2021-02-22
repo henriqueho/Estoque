@@ -85,7 +85,7 @@ public class ProdutoTabela implements ContratoRepositorioDeProduto {
 
     }
     public List<Produto> preencher(){
-        List<Produto> produtoList = new ArrayList<Produto>();
+        List<Produto> produtoList = new ArrayList<>();
 
         Cursor cursor = databaseUtil.getWritableDatabase().rawQuery("SELECT * FROM " + TbProduto.ProdutoEntry.TABLE_NAME, null);
         cursor.moveToFirst();

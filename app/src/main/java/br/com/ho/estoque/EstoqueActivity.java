@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +23,19 @@ public class EstoqueActivity extends AppCompatActivity implements ClickRecyclerV
     RecyclerTesteAdapter adapter;
     private List<Produto> pessoasListas = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
+    private FloatingActionButton actionButton;
+    private TextView numero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estoque);
 
+        numero = findViewById(R.id.textNumero);
         setaRecyclerView();
-
         setaButtons();
         listenersButtons();
+
 
     }
 
@@ -54,6 +58,10 @@ public class EstoqueActivity extends AppCompatActivity implements ClickRecyclerV
     private void carregarRecycler(){
         ProdutoTabela produtoTabela = new ProdutoTabela(EstoqueActivity.this.getApplicationContext());
         pessoasListas = produtoTabela.preencher();
+        Integer numImpressao = pessoasListas.size();
+        if(numImpressao>0) {
+            numero.setText(numImpressao + " itens");
+        }
         adapter = new RecyclerTesteAdapter(this, pessoasListas, this);
         mRecyclerView.setAdapter(adapter);
     }
@@ -67,6 +75,7 @@ public class EstoqueActivity extends AppCompatActivity implements ClickRecyclerV
     public void setaButtons(){
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_fabteste);
+        actionButton = findViewById(R.id.floatingButtom);
 
     }
 
@@ -98,7 +107,14 @@ public class EstoqueActivity extends AppCompatActivity implements ClickRecyclerV
                 //da lista foi alterado
                 pessoasListas.add(pessoa1);
                 adapter.notifyDataSetChanged();
+            }
+        });
 
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EstoqueActivity.this, SalvarActivity.class);
+                EstoqueActivity.this.startActivity(intent);
             }
         });
     }
