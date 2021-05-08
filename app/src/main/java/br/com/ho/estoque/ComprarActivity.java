@@ -31,7 +31,16 @@ public class ComprarActivity extends AppCompatActivity {
         });
     }
 
-    private void PostCotract() {
+    private void postCotract() {
+        String compra = "true";
+        switch (compra){
+            case "true":
+                break;
+            case "false":
+                break;
+            default:
+
+        }
         new AlertDialog.Builder(this)
                 .setTitle("Icone")
                 .setMessage("Sim")

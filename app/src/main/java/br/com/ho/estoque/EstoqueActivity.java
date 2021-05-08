@@ -88,6 +88,7 @@ public class EstoqueActivity extends AppCompatActivity implements ClickRecyclerV
         Intent intent = new Intent(EstoqueActivity.this, AtualizarActivity.class);
         intent.putExtra("EXTRA_SESSION_ID", produto.id);
         EstoqueActivity.this.startActivity(intent);
+
     }
 
     /**
@@ -117,6 +118,7 @@ public class EstoqueActivity extends AppCompatActivity implements ClickRecyclerV
                 EstoqueActivity.this.startActivity(intent);
             }
         });
+
     }
 }
 

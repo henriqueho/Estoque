@@ -94,6 +94,7 @@ public class AtualizarActivity extends AppCompatActivity {
     }
 
     private void atualizacao() {
+        /*
         new AlertDialog.Builder(this)
                 .setTitle("Atualizando")
                 .setMessage("Tem certeza que deseja atualizar esse produto?")
@@ -109,6 +110,24 @@ public class AtualizarActivity extends AppCompatActivity {
                         dialogInterface.cancel();
                     }
                 }).show();
+
+         */
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Atualizando");
+        builder.setMessage("Tem certeza que deseja atualizar esse produto?");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                atualizar();
+            }
+        });
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.create().show();
     }
 
     private void delecao() {
