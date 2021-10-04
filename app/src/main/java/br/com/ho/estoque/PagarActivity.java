@@ -2,7 +2,7 @@ package br.com.ho.estoque;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class PagarActivity extends AppCompatActivity {

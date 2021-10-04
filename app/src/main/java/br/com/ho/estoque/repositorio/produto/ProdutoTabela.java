@@ -91,7 +91,12 @@ public class ProdutoTabela implements ContratoRepositorioDeProduto {
         cursor.moveToFirst();
 
         Produto produto;
-        while (!cursor.isAfterLast()){
+        // cursor.isAfterLast() == cursor esta depois do ultimo
+        // !cursor.isAfterLast() == cursor nao esta depois do ultimo
+        // Boolean isInsideList = !cursor.isAfterLast()
+        // Boolean isInsideList = !cursor.isAfterLast();
+        // while (isInsideList) {
+        while (!cursor.isAfterLast()) {
             produto = new Produto();
             produto.id = cursor.getString(cursor.getColumnIndexOrThrow(TbProduto.ProdutoEntry.COLUMN_ID));
             produto.nome = cursor.getString(cursor.getColumnIndexOrThrow(TbProduto.ProdutoEntry.COLUMN_NAME));
@@ -101,6 +106,7 @@ public class ProdutoTabela implements ContratoRepositorioDeProduto {
             produtoList.add(produto);
 
             cursor.moveToNext();
+            // isInsideList = !cursor.isAfterLast();
         }
 
         return produtoList;
